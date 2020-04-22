@@ -26,5 +26,15 @@ namespace SIngleTone
             var tp = rt.GetTotalPopulation(names);
             Assert.That(tp, Is.EqualTo(4565 + 4688));
         }
+  
+        [Test]
+        public void ConfigurablePopulatinTest()
+        {
+            var rf = new ConfigurableRecordFinder(new DummyDatabase());
+            var names = new[] { "alpha", "gamma" };
+            int tp = rf.GetTotalPopulation(names);
+
+            Assert.That(tp, Is.EqualTo(4));
+        }
     }
 }
