@@ -6,7 +6,7 @@ namespace SIngleTone
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var db = SingletonDatabase.Instance;
         }
     }
 }
