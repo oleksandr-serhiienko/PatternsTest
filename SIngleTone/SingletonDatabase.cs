@@ -12,8 +12,12 @@ namespace SIngleTone
     {
         private Dictionary<string, int> capitals;
 
+        private static int instanceCount;
+        public static int Count => instanceCount;
+
         private SingletonDatabase()
         {
+            instanceCount++;
             Console.WriteLine("Initializing database");
 
             capitals = File.ReadAllLines("capitals.txt")
