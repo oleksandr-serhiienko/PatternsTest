@@ -30,8 +30,8 @@ namespace SIngleTone
             return capitals[name];
         }
 
-        private static SingletonDatabase instance = new SingletonDatabase();
+        private static Lazy<SingletonDatabase> instance = new Lazy<SingletonDatabase>(()=> new SingletonDatabase());
 
-        public static SingletonDatabase Instance => instance;
+        public static SingletonDatabase Instance => instance.Value;
     }
 }
