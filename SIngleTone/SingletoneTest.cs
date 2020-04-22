@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Autofac;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -35,6 +36,21 @@ namespace SIngleTone
             int tp = rf.GetTotalPopulation(names);
 
             Assert.That(tp, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void DIPopulationTest()
+        {
+            var cb = new ContainerBuilder();
+            cb.RegisterType<OridnaryDatabase>()
+                .As<IDatabase>()
+                .SingleInstance();
+            cb.RegisterType<ConfigurableRecordFinder>();
+            using (var c = cb.Build())
+            {
+                var rf = c.Resolve<ConfigurableRecordFinder>();
+            }
+
         }
     }
 }
