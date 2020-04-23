@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Autofac.Features.Metadata;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -31,19 +32,27 @@ namespace Adapter.AdapterDependencyInjection
         public class Button
         {
             private ICommand command;
-            public Button(ICommand command)
+            private string name;
+
+            public Button(ICommand command, string name)
             {
                 this.command = command;
+                this.name = name;
             }
             public void Click()
             {
                 command.Execute();
             }
+
+            public void PrintMe()
+            {
+                Console.WriteLine($"I am a button called {name}");
+            }
         }
 
         public class Editor
         {
-            IEnumerable<Button> buttons;
+            public IEnumerable<Button> buttons;
 
             public Editor(IEnumerable<Button> buttons)
             {
@@ -62,15 +71,21 @@ namespace Adapter.AdapterDependencyInjection
         static void Main(string[] args)
         {
             var b = new ContainerBuilder();
-            b.RegisterType<SaveCommand>().As<ICommand>();
-            b.RegisterType<OpenCommand>().As<ICommand>();
+            b.RegisterType<SaveCommand>().As<ICommand>()
+                .WithMetadata("Name", "Save");
+            b.RegisterType<OpenCommand>().As<ICommand>()
+                .WithMetadata("Name", "Open");
             //b.RegisterType<Button>();
-            b.RegisterAdapter<ICommand, Button>(cmd => new Button(cmd));
+            //b.RegisterAdapter<ICommand, Button>(cmd => new Button(cmd));
+            b.RegisterAdapter<Meta<ICommand>, Button>(cmd =>
+            new Button(cmd.Value, (string)cmd.Metadata["Name"]));
             b.RegisterType<Editor>();
 
             using var c = b.Build();
             var editor = c.Resolve<Editor>();
-            editor.ClickAll();
+            //editor.ClickAll();
+            foreach (var btn in editor.buttons)
+                btn.PrintMe();
 
         }
 
