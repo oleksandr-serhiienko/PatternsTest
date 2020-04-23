@@ -8,5 +8,12 @@ namespace Adapter
         {
             Console.WriteLine("Hello World!");
         }
+
+
+
+        public static void DrawPoint(Point p)
+        {
+            Console.WriteLine(".");
+        }
     }
 }
