@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MoreLinq;
 
 namespace Adapter
 {
@@ -8,8 +9,21 @@ namespace Adapter
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            Draw();
+            Draw();
 
+        }
 
+        public static void Draw()
+        {
+            foreach (var vo in vectorObject)
+            {
+                foreach (var line in vo)
+                {
+                    var adapter = new LineToPointAdapter(line);
+                    adapter.ForEach(DrawPoint);
+                }
+            }
         }
 
         private static readonly List<VectorObject> vectorObject = new List<VectorObject>()
@@ -20,7 +34,7 @@ namespace Adapter
 
         public static void DrawPoint(Point p)
         {
-            Console.WriteLine(".");
+            Console.Write(".");
         }
     }
 }
