@@ -36,5 +36,10 @@ namespace Adapter.GenericAdapter
             for (int i = 0; i < Math.Min(requiredSize, providedSize); ++i)
                 data[i] = values[i];
         }
+
+        public static Vector<T, D> Create(params T[] values)
+        {
+            return new Vector<T, D>(values);
+        }
     }
 }

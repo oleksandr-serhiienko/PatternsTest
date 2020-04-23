@@ -15,6 +15,9 @@ namespace Adapter
             var vv = new Vector2i(3,2);
 
             var result = v + vv;
+
+            var u = Vector3f.Create(1.3f, 4.5f);
+            u.ToString();
         }
     }
 }
