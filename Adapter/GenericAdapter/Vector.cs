@@ -4,8 +4,9 @@ using System.Text;
 
 namespace Adapter.GenericAdapter
 {
-    public class Vector<T, D>
+    public class Vector<TSelf, T, D>
         where D:IInteger, new()
+        where TSelf : Vector<TSelf, T, D>, new()
     {
         protected T[] data;
 
@@ -37,9 +38,19 @@ namespace Adapter.GenericAdapter
                 data[i] = values[i];
         }
 
-        public static Vector<T, D> Create(params T[] values)
+        public static TSelf Create(params T[] values)
         {
-            return new Vector<T, D>(values);
+            var result = new TSelf();
+
+            var requiredSize = new D().Value;
+            result.data = new T[requiredSize];
+
+            var providedSize = values.Length;
+
+            for (int i = 0; i < Math.Min(requiredSize, providedSize); ++i)
+                result.data[i] = values[i];
+
+            return result;
         }
     }
 }

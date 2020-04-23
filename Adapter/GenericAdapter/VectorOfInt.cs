@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Adapter.GenericAdapter
 {
-    public class VectorOfInt<D> : Vector<int, D>
+    public class VectorOfInt<D> : Vector<VectorOfInt<D>, int, D>
         where D : IInteger, new()
     {
         public VectorOfInt(params int[] values) : base(values)
