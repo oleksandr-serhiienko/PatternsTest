@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Adapter.GenericAdapter
 {
-    public class Vector2i : Vector<int, Dimensions.Two>
+    public class Vector2i : VectorOfInt<Dimensions.Two>
     {
         public Vector2i(params int[] values) : base(values)
         {
