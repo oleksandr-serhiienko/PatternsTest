@@ -6,6 +6,10 @@ namespace Adapter.GenericAdapter
 {
     public class Vector2i : Vector<int, Dimensions.Two>
     {
+        public Vector2i(params int[] values) : base(values)
+        {
+
+        }
 
     }
 }

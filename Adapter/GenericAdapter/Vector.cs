@@ -26,6 +26,15 @@ namespace Adapter.GenericAdapter
             set => data[0] = value;
         }
 
- 
+        public Vector(params T[] values)
+        {
+            var requiredSize = new D().Value;
+            data = new T[requiredSize];
+
+            var providedSize = values.Length;
+
+            for (int i = 0; i < Math.Min(requiredSize, providedSize); ++i)
+                data[i] = values[i];
+        }
     }
 }

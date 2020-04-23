@@ -12,7 +12,7 @@ namespace Adapter
             var v = new Vector2i();
             v[0] = 0;
 
-            var vv = new Vector2i();
+            var vv = new Vector2i(3,2);
         }
     }
 }
