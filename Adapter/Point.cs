@@ -13,5 +13,18 @@ namespace Adapter
             X = x;
             Y = y;
         }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return (X * 397) ^ Y; 
+            }
+        }
+
+        protected bool Equals(Point other)
+        {
+            return X == other.X && Y == other.Y;
+        }
     }
 }
