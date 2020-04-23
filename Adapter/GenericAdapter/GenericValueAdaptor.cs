@@ -7,7 +7,7 @@ namespace Adapter
 {
     class GenericValueAdaptor
     {
-        static void Main(string[] args)
+        static void Mainww(string[] args)
         {
             var v = new Vector2i(1, 3);
             v[0] = 0;

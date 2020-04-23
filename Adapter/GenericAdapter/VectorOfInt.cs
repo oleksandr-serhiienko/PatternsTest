@@ -11,6 +11,10 @@ namespace Adapter.GenericAdapter
         {
 
         }
+        public VectorOfInt()
+        {
+
+        }
 
         public static VectorOfInt<D> operator +
             (VectorOfInt<D> lhs, VectorOfInt<D> rhs)
