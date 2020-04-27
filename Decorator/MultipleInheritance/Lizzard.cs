@@ -10,5 +10,7 @@ namespace Decorator.MultipleInheritance
         {
             Console.WriteLine("Crawling in the dirt");
         }
+
+        public int Weight { get; set; }
     }
 }

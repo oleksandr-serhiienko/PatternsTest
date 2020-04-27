@@ -10,5 +10,7 @@ namespace Decorator.MultipleInheritance
         {
             Console.WriteLine("Soaring in the sky");
         }
+
+        public int Weight { get; set; }
     }
 }

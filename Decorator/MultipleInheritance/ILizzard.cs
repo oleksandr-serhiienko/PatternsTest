@@ -2,6 +2,8 @@
 {
     public interface ILizzard
     {
+        int Weight { get; set; }
+
         void Crawl();
     }
 }
