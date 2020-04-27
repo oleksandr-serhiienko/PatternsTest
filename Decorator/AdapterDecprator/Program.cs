@@ -4,9 +4,12 @@ namespace Decorator
 {
     class Program
     {
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var s = "hello ";
+            s += "world";
+            Console.WriteLine(s);
         }
     }
 }
