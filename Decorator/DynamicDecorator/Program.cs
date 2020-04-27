@@ -6,7 +6,7 @@ namespace Decorator.DynamicDecorator
     class Program
     {
 
-        static void Main(string[] args)
+        static void Main2(string[] args)
         {
             var redSquare = new ColoredShape<Square>();
             Console.WriteLine(redSquare.AsString());
