@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Decorator.DynamicDecorator
 {
-    public interface IShape 
+    public abstract class Shape 
     {
-        string AsString();
+        public abstract string AsString();
     }
 }

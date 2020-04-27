@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Decorator.StaticDecorator;
+using System;
 
 namespace Decorator.DynamicDecorator
 {
@@ -7,14 +8,11 @@ namespace Decorator.DynamicDecorator
 
         static void Main(string[] args)
         {
-            var square = new Square(1.23f);
-            Console.WriteLine(square.AsString());
-
-            var redSquare = new ColoredShape(square, "red");
+            var redSquare = new ColoredShape<Square>();
             Console.WriteLine(redSquare.AsString());
 
-            var redHalfTransperentSquare = new TransperentShape(redSquare, 0.5f);
-            Console.WriteLine(redHalfTransperentSquare.AsString());
+            var circle = new TransperentShape<ColoredShape<Circle>>(3f);
+            Console.WriteLine(circle.AsString());
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Decorator.DynamicDecorator
 {
-    public class Square : IShape
+    public class Square : Shape
     {
         private float side;
 
@@ -12,7 +12,12 @@ namespace Decorator.DynamicDecorator
         {
             this.side = side;
         }
-        public string AsString()
+
+        public Square() : this (0.0f)
+        {
+
+        }
+        public override string AsString()
         {
             return $"A square with side {side}";
         }

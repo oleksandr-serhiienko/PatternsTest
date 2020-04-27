@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Decorator.DynamicDecorator
 {
-    public class Circle : IShape
+    public class Circle : Shape
     {
         private float radius;
 
@@ -13,12 +13,17 @@ namespace Decorator.DynamicDecorator
             this.radius = radius;
         }
 
+        public Circle() : this (0.0f)
+        {
+
+        }
+
         public void Resize(float factor)
         {
             radius *= factor;
         }
 
-        public string AsString()
+        public override string AsString()
         {
             return $"A circle with radius {radius}";
         }

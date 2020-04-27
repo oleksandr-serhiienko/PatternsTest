@@ -4,17 +4,17 @@ using System.Text;
 
 namespace Decorator.DynamicDecorator
 {
-    public class TransperentShape : IShape
+    public class TransperentShape : Shape
     {
-        private IShape shape;
+        private Shape shape;
         private float transperacy;
 
-        public TransperentShape(IShape shape, float transparency)
+        public TransperentShape(Shape shape, float transparency)
         {
             this.shape = shape;
             this.transperacy = transparency;
         }
-        public string AsString()
+        public override string AsString()
         {
             return $"{shape.AsString()} has {transperacy} transperacy ";
         }

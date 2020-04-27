@@ -4,18 +4,18 @@ using System.Text;
 
 namespace Decorator.DynamicDecorator
 {
-    public class ColoredShape : IShape
+    public class ColoredShape : Shape
     {
 
-        private IShape shape;
+        private Shape shape;
         private string color;
 
-        public ColoredShape(IShape shape, string color)
+        public ColoredShape(Shape shape, string color)
         {
             this.shape = shape;
             this.color = color;
         }
-        public string AsString()
+        public override string AsString()
         {
             return $"{shape.AsString()} has the color {color}";
         }
