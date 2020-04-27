@@ -9,7 +9,18 @@ namespace Decorator.MultipleInheritance
         private Bird bird = new Bird();
         private Lizzard lizzard = new Lizzard();
 
-        public int Weight { get; set; }
+        private int weight;
+
+        public int Weight
+        {
+            get { return weight; }
+            set { 
+                    weight = value;
+                    bird.Weight = value;
+                    lizzard.Weight = value;
+                }
+        }
+
 
         public void Crawl()
         {
