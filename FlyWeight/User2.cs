@@ -25,6 +25,8 @@ namespace FlyWeight
 
         }
 
+        
+
         public string FullName => string.Join(' ',
             names.Select(i => strings[i]));
     }

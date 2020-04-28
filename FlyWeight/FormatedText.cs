@@ -20,7 +20,7 @@ namespace FlyWeight
             {
                 capitalized[i] = true;
             }
-        }
+        }       
 
         public override string ToString()
         {
