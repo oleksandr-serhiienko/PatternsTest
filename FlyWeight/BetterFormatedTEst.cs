@@ -8,6 +8,7 @@ namespace FlyWeight
     {
         private string plainText;
         private List<TextRange> formatting = new List<TextRange>();
+        
 
         public BetterFormatedTEst(string plainText)
         {

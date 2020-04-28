@@ -1,4 +1,5 @@
-﻿using JetBrains.dotMemoryUnit;
+﻿using Coding.Exercise;
+using JetBrains.dotMemoryUnit;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,12 @@ namespace FlyWeight
             var bft = new BetterFormatedTEst("This is a brave new world");
             bft.GetRange(10, 15).Capitalize = true;
             Console.WriteLine(bft);
+
+            var sentence = new Sentence("alpha betta gamma");
+            sentence[1].Capitalize = false;
+            sentence[1].Capitalize = false;
+            sentence[1].Capitalize = true;
+            Console.WriteLine(sentence);
         }
 
         [Test]
