@@ -11,8 +11,8 @@ namespace Proxy
             //ICar car = new CarProxy(new Driver(12));
             //car.Drive();
 
-            var c = new Creature();
-            c.Agility = 10;
+            //var c = new Creature();
+            //c.Agility = 10;
 
         }
     }
