@@ -6,7 +6,7 @@ namespace Proxy
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main1(string[] args)
         {
             //ICar car = new CarProxy(new Driver(12));
             //car.Drive();
