@@ -9,19 +9,22 @@ namespace Command.Command
         private int balance;
         private int overdraftLimit = -500;
 
-        public void Deposit(int amount)
+        public bool Deposit(int amount)
         {
             balance += amount;
             Console.WriteLine($"Deposited {amount}, balance is now {balance}");
+            return true;
         }
 
-        public void Withdraw(int amount)
+        public bool Withdraw(int amount)
         {
             if (balance - amount >= overdraftLimit)
             {
                 balance -= amount;
                 Console.WriteLine($"Withdrew ${amount}, balance is now {balance}");
+                return true;
             }
+            return false;
         }
 
         public override string ToString()

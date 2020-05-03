@@ -13,6 +13,7 @@ namespace Command.Command
 
         private Action action;
         private int amount;
+        private bool succeeded;
 
         public BancAccountCommand(BankAccount account, Action action, int amount)
         {
@@ -26,15 +27,32 @@ namespace Command.Command
             {
                 case Action.Deposit:
                     account.Deposit(amount);
-                    //succeeded = true;
+                    succeeded = true;
                     break;
                 case Action.Withdraw:
-                    //succeeded = account.Withdraw(amount);
+                    succeeded = account.Withdraw(amount);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
 
+        }
+
+        public void Undo()
+        {
+            if (!succeeded) return;
+            switch (action)
+            {               
+                case Action.Deposit:
+                    account.Withdraw(amount);
+                    break;
+                case Action.Withdraw:
+                    account.Deposit(amount);
+
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }

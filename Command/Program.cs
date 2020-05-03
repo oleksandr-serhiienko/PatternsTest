@@ -1,6 +1,7 @@
 ﻿using Command.Command;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Command
 {
@@ -19,6 +20,11 @@ namespace Command
 
             foreach (var c in commands)
                 c.Call();
+
+            Console.WriteLine(ba);
+
+            foreach (var c in Enumerable.Reverse(commands))
+                c.Undo();
 
             Console.WriteLine(ba);
 
