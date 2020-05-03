@@ -9,5 +9,7 @@ namespace Command.Command
         void Call();
 
         void Undo();
+
+        bool Success { get; set; }
     }
 }

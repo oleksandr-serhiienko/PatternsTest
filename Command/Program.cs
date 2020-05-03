@@ -9,24 +9,16 @@ namespace Command
     {
         static void Main(string[] args)
         {
-            var ba = new BankAccount();
-            var commands = new List<BancAccountCommand>
-              {
-                new BancAccountCommand(ba, BancAccountCommand.Action.Deposit, 100),
-                new BancAccountCommand(ba, BancAccountCommand.Action.Withdraw, 1000)
-              };
-
-            Console.WriteLine(ba);
-
-            foreach (var c in commands)
-                c.Call();
-
-            Console.WriteLine(ba);
-
-            foreach (var c in Enumerable.Reverse(commands))
-                c.Undo();
-
-            Console.WriteLine(ba);
+            var from = new BankAccount();
+            from.Deposit(100);
+            var to = new BankAccount();
+            var mtc = new MoneyTransferCommnd(from, to, 100);
+            mtc.Call();
+            Console.WriteLine(from);
+            Console.WriteLine(to);
+            mtc.Undo();
+            Console.WriteLine(from);
+            Console.WriteLine(to);
 
         }
     }

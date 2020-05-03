@@ -15,6 +15,8 @@ namespace Command.Command
         private int amount;
         private bool succeeded;
 
+        public bool Success { get; set; }
+
         public BancAccountCommand(BankAccount account, Action action, int amount)
         {
             this.action = action;
