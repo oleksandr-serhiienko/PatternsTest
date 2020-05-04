@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Coding.Exercise;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -102,12 +103,15 @@ namespace Intepreter
 
         static void Main(string[] args)
         {
-            string input = "(13+4)-(12+1)";
-            var tokens = Lex(input);
-            Console.WriteLine(string.Join("\t", tokens));
+            string input = "13+4+2";
+            var proc = new ExpressionProcessor();
+            var e = proc.Calculate(input);
+            Console.WriteLine(e);
+            //var tokens = Lex(input);
+            //Console.WriteLine(string.Join("\t", tokens));
 
-            var parsed = Parse(tokens);
-            Console.WriteLine($"{input} = {parsed.Value}");
+            //var parsed = Parse(tokens);
+            //Console.WriteLine($"{input} = {parsed.Value}");
         }
     }
 }
