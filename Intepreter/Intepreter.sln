@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intepreter", "Intepreter.csproj", "{98957DA4-C735-4647-B74E-95B9F6DD3430}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98957DA4-C735-4647-B74E-95B9F6DD3430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98957DA4-C735-4647-B74E-95B9F6DD3430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98957DA4-C735-4647-B74E-95B9F6DD3430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98957DA4-C735-4647-B74E-95B9F6DD3430}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F30ADE5B-5470-4E4E-824B-889D660A71B4}
+	EndGlobalSection
+EndGlobal
