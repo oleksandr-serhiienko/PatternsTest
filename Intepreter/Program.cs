@@ -56,6 +56,7 @@ namespace Intepreter
             {
                 var token = tokens[i];
 
+                // look at the type of token
                 switch (token.MyType)
                 {
                     case Token.Type.Integer:
@@ -66,7 +67,9 @@ namespace Intepreter
                             haveLHS = true;
                         }
                         else
+                        {
                             result.Right = integer;
+                        }
                         break;
                     case Token.Type.Plus:
                         result.MyType = BinaryOperation.Type.Addition;
@@ -75,23 +78,23 @@ namespace Intepreter
                         result.MyType = BinaryOperation.Type.Substraction;
                         break;
                     case Token.Type.Lparen:
-                        int j = 1;
+                        int j = i;
                         for (; j < tokens.Count; ++j)
                             if (tokens[j].MyType == Token.Type.Pparen)
-                                break;
-                        var subexpresion = tokens.Skip(i + 1).Take(j - i - 1).ToList();
-                        var elemnt = Parse(subexpresion);
+                                break; // found it!
+                                       // process subexpression w/o opening (
+                        var subexpression = tokens.Skip(i + 1).Take(j - i - 1).ToList();
+                        var element = Parse(subexpression);
                         if (!haveLHS)
                         {
-                            result.Left = elemnt;
+                            result.Left = element;
                             haveLHS = true;
                         }
-                        else
-                            result.Right = elemnt;
-                        i = j;
+                        else result.Right = element;
+                        i = j; // advance
                         break;
                     default:
-                        throw new ArgumentNullException();
+                        throw new ArgumentOutOfRangeException();
                 }
             }
             return result;
