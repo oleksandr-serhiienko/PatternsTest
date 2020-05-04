@@ -7,7 +7,7 @@ namespace Iterator
     public class InOrderIterator<T>
     {
         private readonly Node<T> root;
-        public Node<T> Current;
+        public Node<T> Current { get;  }
         private bool yieldedStart;
 
         public InOrderIterator(Node<T> root)
