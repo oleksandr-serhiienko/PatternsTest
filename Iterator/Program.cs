@@ -44,17 +44,27 @@ namespace Iterator
         {
             var root = new Node<int>(1, new Node<int>(2), new Node<int>(3));
             var it = new InOrderIterator<int>(root);
-            while (it.MoveNext())
-            {
-                Console.WriteLine(it.Current.Value);
-                Console.WriteLine(",");
-            }
+            //while (it.MoveNext())
+            //{
+            //    Console.WriteLine(it.Current.Value);
+            //    Console.WriteLine(",");
+            //}
 
             //var tree = new BinaryTree<int>(root);
             //Console.WriteLine(string.Join(",", tree.InOrder.Select(x => x.Value)));
 
             var tree = new BinaryTree<int>(root);
 
+
+
+            var node = new Coding.Exercise.Node<char>('a',
+          new Coding.Exercise.Node<char>('b',
+            new Coding.Exercise.Node<char>('c'),
+            new Coding.Exercise.Node<char>('d')),
+          new Coding.Exercise.Node<char>('e'));
+
+            var dd = node.PreOrder;
+            //Console.WriteLine(.Select(x => x.));
         }
     }
 }

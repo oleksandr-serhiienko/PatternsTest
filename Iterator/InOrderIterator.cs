@@ -18,38 +18,38 @@ namespace Iterator
                 Current = Current.Left;
         }
 
-        public bool MoveNext()
-        {   
-            if(!yieldedStart)
-            {
-                yieldedStart = true;
-                return true;
-            }
+        //public bool MoveNext()
+        //{   
+        //    if(!yieldedStart)
+        //    {
+        //        yieldedStart = true;
+        //        return true;
+        //    }
 
-            if (Current.Right != null)
-            {
-                Current = Current.Right;
-                while (Current.Left != null)
-                    Current = Current.Left;
-            }
-            else 
-            {
-                var p = Current.Parent;
-                while (p != null && Current == p.Right)
-                {
-                    Current = p;
-                    p = p.Parent;
-                }
-                Current = p;
+        //    if (Current.Right != null)
+        //    {
+        //        Current = Current.Right;
+        //        while (Current.Left != null)
+        //            Current = Current.Left;
+        //    }
+        //    else 
+        //    {
+        //        var p = Current.Parent;
+        //        while (p != null && Current == p.Right)
+        //        {
+        //            Current = p;
+        //            p = p.Parent;
+        //        }
+        //        Current = p;
                 
-            }
-            return Current != null;
-        }
+        //    }
+        //    return Current != null;
+        //}
 
-        public void Reset()
-        {
-            Current = root;
-            yieldedStart = false;
-        }
+        //public void Reset()
+        //{
+        //    Current = root;
+        //    yieldedStart = false;
+        //}
     }
 }
