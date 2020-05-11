@@ -1,27 +1,32 @@
-﻿using System;
+﻿using Autofac;
+using System;
+using MediatR;
+using Mediator.NewFolder;
+using System.Threading.Tasks;
 
 namespace Mediator
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            var room = new ChatRoom();
+            var builder = new ContainerBuilder();
+            builder.RegisterType<MediatR.Mediator>()
+                .As<IMediator>().InstancePerLifetimeScope();
 
-            var john = new Person("John");
-            var jane = new Person("Jane");
+            builder.Register<ServiceFactory>(ctx
+                =>
+            {
+                var c = ctx.Resolve<IComponentContext>();
+                return t => c.Resolve(t);
+            });
 
-            room.Join(john);
-            room.Join(jane);
+            builder.RegisterAssemblyTypes(typeof(Program).Assembly);
 
-            john.Say("hi");
-            jane.Say("oh, hey john");
-
-            var simon = new Person("Simon");
-            room.Join(simon);
-            simon.Say("hi everyone!");
-
-            jane.PrivateMessage("Simon", "glad you could join us");
+            var container = builder.Build();
+            var mediator = container.Resolve<IMediator>();
+            var response = await mediator.Send(new PingCommand());
+            Console.WriteLine(response.TimeStamp);
         }
     }
 }
