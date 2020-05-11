@@ -7,7 +7,7 @@ namespace Coding.Exercise
 {
     public class Token
     {
-        public int Value = 0;
+        public int Value = 0; 
 
         public Token(int value)
         {
@@ -58,8 +58,7 @@ namespace Coding.Exercise
 
         public void Revert(Memento m)
         {
-            m.Token
-            Tokens.Remove(changes.First(tr => tr.GetHashCode() == m.GetHashCode()).Token);
+            Tokens.Remove(changes.First(tr => tr.Equals(m)).Token);
             changes.Add(m);
         }
     }
