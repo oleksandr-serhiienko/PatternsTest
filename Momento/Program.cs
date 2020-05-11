@@ -7,12 +7,14 @@ namespace Momento
         static void Main(string[] args)
         {
             var ba = new BankAccount(100);
-            var m1 = ba.Deposit(50);
-            var m2 = ba.Deposit(25);
+            ba.Deposit(50);
+            ba.Deposit(25);
             Console.WriteLine(ba);
-            ba.Restore(m1);
+            ba.Undo();
             Console.WriteLine(ba);
-            ba.Restore(m2);
+            ba.Undo();
+            Console.WriteLine(ba);
+            ba.Redo();
             Console.WriteLine(ba);
         }
     }
