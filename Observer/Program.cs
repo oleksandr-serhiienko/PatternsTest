@@ -1,36 +1,33 @@
-﻿using Observer.WeakEvents;
+﻿using Observer.IObserverObservable;
+using Observer.WeakEvents;
 using System;
-
+using System.Runtime.InteropServices;
 
 namespace Observer
 {
-    class Program
+    class Program : IObserver<Event>
     {
         static void Main(string[] args)
         {
-            var button = new Button();
-            var window = new Window(button);
-            var windowref = new WeakReference(window);
-            button.Fire();
-            Console.WriteLine("setting window to null");
-            window = null;
-
-            FireGC();
+            new Program();
         }
 
-        private static void FireGC()
+        public Program()
         {
-            Console.WriteLine("statrting gc");
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            GC.Collect();
-            Console.WriteLine("finished gc");
+            var person = new IObserverObservable.Person();
+            var sub = person.Subscribe(this);
+
+            person.FallIll();
         }
 
-        private static void CallDoctor(object sender, FallsillEventArgs e)
+        public void OnCompleted() {}
+
+        public void OnError(Exception error) {}
+
+        public void OnNext(Event value)
         {
-            Console.WriteLine($"Doctor was cold to {e.Address}");
-            
+            if(value is FallsIllEvent args)
+                Console.WriteLine($"A doctor is req at {args.Adress}");
         }
     }
 }
