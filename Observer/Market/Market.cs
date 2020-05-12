@@ -9,14 +9,11 @@ namespace Observer.Market
 {
     public class Market 
     {
-        private List<float> prices = new List<float>();
+        public BindingList<float> Prices = new BindingList<float>();
 
         public void AddPrice(float price)
         {
-            prices.Add(price);
-            PriceAdded?.Invoke(this, price);
+            Prices.Add(price);
         }
-
-        public event EventHandler<float> PriceAdded;
     }
 }
