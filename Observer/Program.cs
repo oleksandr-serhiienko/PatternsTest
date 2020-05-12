@@ -14,25 +14,12 @@ namespace Observer
             var product = new Product { Name = "Book" };
             var window = new BidiractionalBinding.Window { ProductName = "Book" };
 
-            product.PropertyChanged += (sender, eventArgs) =>
-            {
-                if (eventArgs.PropertyName == "Name")
-                {
-                    Console.WriteLine("Name changed in Product");
-                    window.ProductName = product.Name;
-                }
-            };
-
-            window.PropertyChanged += (sender, eventArgs) =>
-            {
-                if (eventArgs.PropertyName == "ProductName")
-                {
-                    Console.WriteLine("Name is changed in Window");
-                    product.Name = window.ProductName;
-                }
-            };
+            using var binding = new BidiractionalBinding.BdiireactionalBinding(
+                product, () => product.Name, window, () => window.ProductName
+            );
 
             product.Name = "SmartBook";
+
             Console.WriteLine(window);
             Console.WriteLine(product);
 
