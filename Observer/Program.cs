@@ -1,4 +1,5 @@
-﻿using Observer.IObserverObservable;
+﻿using Observer.BidiractionalBinding;
+using Observer.IObserverObservable;
 using Observer.WeakEvents;
 using System;
 using System.ComponentModel;
@@ -10,15 +11,31 @@ namespace Observer
     {
         static void Main(string[] args)
         {
-            var market = new Market.Market();
-            market.Prices.ListChanged += (sender, EventArgs) =>
+            var product = new Product { Name = "Book" };
+            var window = new BidiractionalBinding.Window { ProductName = "Book" };
+
+            product.PropertyChanged += (sender, eventArgs) =>
             {
-                if (EventArgs.ListChangedType == ListChangedType.ItemAdded)
+                if (eventArgs.PropertyName == "Name")
                 {
-                    float price = ((BindingList<float>)sender)[EventArgs.NewIndex];
-                    Console.WriteLine($"Biniding list has a price of {price}");
+                    Console.WriteLine("Name changed in Product");
+                    window.ProductName = product.Name;
                 }
             };
+
+            window.PropertyChanged += (sender, eventArgs) =>
+            {
+                if (eventArgs.PropertyName == "ProductName")
+                {
+                    Console.WriteLine("Name is changed in Window");
+                    product.Name = window.ProductName;
+                }
+            };
+
+            product.Name = "SmartBook";
+            Console.WriteLine(window);
+            Console.WriteLine(product);
+
         }
       
     }
