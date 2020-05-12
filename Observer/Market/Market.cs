@@ -7,27 +7,16 @@ using System.Text;
 
 namespace Observer.Market
 {
-    public class Market : INotifyPropertyChanged
+    public class Market 
     {
-        private float volatility;
+        private List<float> prices = new List<float>();
 
-        public float Volatility
+        public void AddPrice(float price)
         {
-            get => volatility;
-            set
-            {
-                if (value.Equals(volatility)) return;
-                volatility = value;
-                OnPropertyChanged();
-            }
+            prices.Add(price);
+            PriceAdded?.Invoke(this, price);
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyname = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
-        }
+        public event EventHandler<float> PriceAdded;
     }
 }

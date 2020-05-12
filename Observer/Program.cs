@@ -10,12 +10,11 @@ namespace Observer
         static void Main(string[] args)
         {
             var market = new Market.Market();
-            market.PropertyChanged += (sender, eventArgs) =>
+            market.PriceAdded += (sender, f) =>
             {
-                if (eventArgs.PropertyName == "Volatility")
-                {
-                }
+                Console.WriteLine($"We got a price of {f}");
             };
+            market.AddPrice(123);
         }
       
     }
