@@ -30,7 +30,7 @@ namespace StateDesignPatterm
           (Trigger.HungUp, State.OffHook)
         }
             };
-        static void Main(string[] args)
+        static void Main1(string[] args)
         {
             var state = State.OffHook;
             while (true)
