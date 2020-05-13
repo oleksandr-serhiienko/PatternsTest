@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StateDesignPatterm
 {
-    public abstract class State
+    public abstract class eState
     {
         public virtual void On(Switch sw)
         {
