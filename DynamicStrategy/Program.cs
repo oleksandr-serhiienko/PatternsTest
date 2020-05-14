@@ -1,5 +1,7 @@
 ﻿using DynamicStrategy.Format;
+using DynamicStrategy.QualityCompar;
 using System;
+using System.Collections.Generic;
 
 namespace DynamicStrategy
 {
@@ -7,9 +9,10 @@ namespace DynamicStrategy
     {
         static void Main(string[] args)
         {
-            var tp = new TextProcessor<MarkdownListStrategy>();
-            tp.AppendList(new[] { "foo", "bar", "baz" });
-            var tp2 = new TextProcessor<MarkdownListStrategy>();
+            var people = new List<Person>();
+
+            people.Sort();
+            people.Sort((x, y) => x.Name.CompareTo(y.Name));
         }
     }
 }
