@@ -16,13 +16,9 @@ namespace Visitor
                     ));
 
             var ep = new ExpressionPrinter();
-
-            ep.Visit(e);
-            Console.WriteLine(ep);
-
-            var calc = new ExpressionCalculatro();
-            calc.Visit(e);
-            Console.WriteLine($"{ep} = {calc.Result} ");
+            var sb = new StringBuilder();
+            ep.Print((dynamic)e, sb);
+            Console.WriteLine(sb);
         }
     }
 }

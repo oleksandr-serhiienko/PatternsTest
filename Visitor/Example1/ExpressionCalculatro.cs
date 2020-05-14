@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Visitor.Example1
 {
-    class ExpressionCalculatro : IExpressionVisitor
+    class ExpressionCalculatro 
     {
         public double Result;
 
@@ -15,11 +15,7 @@ namespace Visitor.Example1
 
         public void Visit(AdditionExpression ae)
         {
-            ae.Left.Accept(this);
-            var a = Result;
-            ae.Right.Accept(this);
-            var b = Result;
-            Result = a + b;
+
 
         }
     }

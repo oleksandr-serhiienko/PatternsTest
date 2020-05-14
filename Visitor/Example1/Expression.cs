@@ -7,7 +7,7 @@ namespace Visitor.Example1
 {
     public abstract class Expression
     {
-        public abstract void Accept(IExpressionVisitor visitor);
+        
     }
    
 }

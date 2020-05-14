@@ -5,22 +5,20 @@ using System.Text;
 
 namespace Visitor.Example1
 {
-    public class ExpressionPrinter :IExpressionVisitor
+    public class ExpressionPrinter 
     {
-        private StringBuilder sb = new StringBuilder();
-
-        public void Visit(DoubleExpression de)
-        {
-            sb.Append(de.Value);
-        }
-
-        public void Visit(AdditionExpression ae)
+        public void Print(AdditionExpression ae, StringBuilder sb)
         {
             sb.Append("(");
-            ae.Left.Accept(this);
+            Print((dynamic)ae.Left, sb);
             sb.Append("+");
-            ae.Right.Accept(this);
+            Print((dynamic)ae.Right, sb);
             sb.Append(")");
+        }
+
+        public void Print(DoubleExpression ae, StringBuilder sb)
+        {
+            sb.Append(ae.Value);
         }
     }
 }

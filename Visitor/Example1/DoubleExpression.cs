@@ -14,9 +14,5 @@ namespace Visitor.Example1
             this.Value = value;
         }
 
-        public override void Accept(IExpressionVisitor visitor)
-        {
-            visitor.Visit(this);
-        }
     }
 }
