@@ -19,6 +19,10 @@ namespace Visitor
 
             ep.Visit(e);
             Console.WriteLine(ep);
+
+            var calc = new ExpressionCalculatro();
+            calc.Visit(e);
+            Console.WriteLine($"{ep} = {calc.Result} ");
         }
     }
 }
