@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DynamicStrategy.Format;
+using System;
 
 namespace DynamicStrategy
 {
@@ -6,7 +7,9 @@ namespace DynamicStrategy
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var tp = new TextProcessor();
+            tp.SetOutputFormat(OutputFormat.Markdown);
+            tp.AppendList(new[] { "foo", "bar", "baz" });
         }
     }
 }
