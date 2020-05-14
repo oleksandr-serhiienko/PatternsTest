@@ -7,15 +7,12 @@ namespace Visitor.Example1
 {
     public class DoubleExpression : Expression
     {
-        private double value;
+        public double Value;
 
         public DoubleExpression(double value)
         {
-            this.value = value;
+            this.Value = value;
         } 
-        public override void Print(StringBuilder sb)
-        {
-            sb.Append(value);
-        }
+
     }
 }

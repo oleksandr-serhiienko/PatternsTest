@@ -16,7 +16,7 @@ namespace Visitor
                     ));
 
             var sb = new StringBuilder();
-            e.Print(sb);
+            ExpressionPrinter.Print(e, sb);
             Console.WriteLine(sb);
         }
     }

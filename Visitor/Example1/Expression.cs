@@ -7,7 +7,6 @@ namespace Visitor.Example1
 {
     public abstract class Expression
     {
-        public abstract void Print(StringBuilder sb);
     }
    
 }

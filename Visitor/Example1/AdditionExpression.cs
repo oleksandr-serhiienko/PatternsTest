@@ -6,20 +6,12 @@ namespace Visitor.Example1
 {
     public class AdditionExpression : Expression
     {
-        private Expression left, right;
+        public Expression Left, Right;
 
         public AdditionExpression(Expression left, Expression right)
         {
-            this.left = left;
-            this.right = right;
-        }
-        public override void Print(StringBuilder sb)
-        {
-            sb.Append("(");
-            left.Print(sb);
-            sb.Append("+");
-            right.Print(sb);
-            sb.Append(")");
+            this.Left = left;
+            this.Right = right;
         }
     }
 }
