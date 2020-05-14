@@ -7,9 +7,9 @@ namespace DynamicStrategy
     {
         static void Main(string[] args)
         {
-            var tp = new TextProcessor();
-            tp.SetOutputFormat(OutputFormat.Markdown);
+            var tp = new TextProcessor<MarkdownListStrategy>();
             tp.AppendList(new[] { "foo", "bar", "baz" });
+            var tp2 = new TextProcessor<MarkdownListStrategy>();
         }
     }
 }

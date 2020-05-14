@@ -4,24 +4,14 @@ using System.Text;
 
 namespace DynamicStrategy.Format
 {
-    public class TextProcessor
+    public class TextProcessor<LS> where LS: IListStrategy, new()
     {
         StringBuilder sb = new StringBuilder();
-        IListStrategy listStrategy;
+        IListStrategy listStrategy = new LS();
 
-        public void SetOutputFormat(OutputFormat format)
+        public TextProcessor()
         {
-            switch (format)
-            {
-                case OutputFormat.Markdown:
-                    listStrategy = new MarkdownListStrategy();
-                    break;
-                case OutputFormat.Html:
-                    listStrategy = new HtmlListStratege();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(format), format, null);
-            }
+                
         }
 
         public void AppendList(IEnumerable<string> items)
