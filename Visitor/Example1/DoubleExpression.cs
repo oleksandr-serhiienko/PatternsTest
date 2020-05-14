@@ -12,7 +12,11 @@ namespace Visitor.Example1
         public DoubleExpression(double value)
         {
             this.Value = value;
-        } 
+        }
 
+        public override void Accept(IExpressionVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
     }
 }

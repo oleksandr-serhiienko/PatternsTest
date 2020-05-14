@@ -13,5 +13,10 @@ namespace Visitor.Example1
             this.Left = left;
             this.Right = right;
         }
+
+        public override void Accept(IExpressionVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
     }
 }

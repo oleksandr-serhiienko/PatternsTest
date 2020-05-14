@@ -15,9 +15,10 @@ namespace Visitor
                     new DoubleExpression(2), new DoubleExpression(3)
                     ));
 
-            var sb = new StringBuilder();
-            ExpressionPrinter.Print(e, sb);
-            Console.WriteLine(sb);
+            var ep = new ExpressionPrinter();
+
+            ep.Visit(e);
+            Console.WriteLine(ep);
         }
     }
 }
