@@ -1,4 +1,5 @@
 ﻿using System;
+using TemplateMethod.GAme;
 
 namespace TemplateMethod
 {
@@ -6,7 +7,8 @@ namespace TemplateMethod
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var chess = new Chess(2);
+            chess.Run();
         }
     }
 }
